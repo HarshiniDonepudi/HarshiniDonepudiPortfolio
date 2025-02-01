@@ -1412,6 +1412,58 @@
     display: inline-block;
     white-space: nowrap;
 }
+.success-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    margin: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.success-content i {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.success-content h3 {
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.success-content p {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: var(--primary-dark);
+}
 
 /* Scrolling Text Animation */
 @keyframes scrollText {
@@ -2210,57 +2262,50 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="contact-form">
             <!-- Secure Contact Form -->
-<form 
-action="https://formsubmit.co/hsd39@cornell.edu" 
-method="POST"
-class="contact-form">
-
-<!-- Security Measures -->
-<!-- This prevents redirects to external sites -->
-<input type="hidden" name="_next" value="https://HarshiniDonepudi.github.io/thanks.html">
-
-<!-- Disable captcha -->
-<input type="hidden" name="_captcha" value="false">
-
-<!-- Prevent spam submissions -->
-<input type="hidden" name="_subject" value="New Portfolio Contact">
-
-<!-- This prevents spammers from inserting links -->
-<input type="hidden" name="_template" value="table">
-
-<!-- This prevents using the form for spam -->
-<input type="hidden" name="_blacklist" value="spamwords,badwords,otherspamwords">
-
-<!-- Honeypot field to prevent bots -->
-<input type="text" name="_honey" style="display:none">
-
-<!-- Form Fields -->
-<div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required>
-</div>
-
-<div class="form-group">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required>
-</div>
-
-<div class="form-group">
-    <label for="message">Message</label>
-    <textarea name="message" id="message" rows="5" required></textarea>
-</div>
-
-<button type="submit" class="submit-btn">Send Message</button>
-</form>
+            <form 
+            action="https://formsubmit.co/hsd39@cornell.edu" 
+            method="POST"
+            class="contact-form">
+            
+            <!-- Redirect to the same page -->
+            <input type="hidden" name="_next" value="https://yourusername.github.io/#contact?success=true">
+            
+            <!-- Other security measures -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Portfolio Contact">
+            <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none">
+        
+            <!-- Form Fields -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+        
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="5" required></textarea>
+            </div>
+        
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
             
         </div>
-        <div id="success-message" class="success-message" style="display: none;">
+        <div id="success-popup" class="success-popup">
             <div class="success-content">
                 <i class="fas fa-check-circle"></i>
                 <h3>Message Sent Successfully!</h3>
                 <p>Thank you for reaching out. I'll get back to you soon.</p>
+                <button onclick="closeSuccessPopup()" class="close-btn">Close</button>
             </div>
         </div>
+        
+        
         
     
 
@@ -2376,6 +2421,24 @@ class="contact-form">
                     });
                 });
             });
+            document.addEventListener('DOMContentLoaded', () => {
+                const urlParams = new URLSearchParams(window.location.hash.split('?')[1]);
+                if (urlParams.get('success') === 'true') {
+                    showSuccessPopup();
+                    // Remove success parameter from URL
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }
+            });
+            
+            function showSuccessPopup() {
+                const popup = document.getElementById('success-popup');
+                popup.style.display = 'flex';
+            }
+            
+            function closeSuccessPopup() {
+                const popup = document.getElementById('success-popup');
+                popup.style.display = 'none';
+            }
        
     </script>
 </body>
