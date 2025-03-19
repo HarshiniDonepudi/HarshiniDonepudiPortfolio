@@ -1532,49 +1532,81 @@
         }
         
         /* Startups Section */
-        .startups-section {
-            background: white;
-            padding: 120px 40px;
-        }
-        
-        .startups-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-        }
-        
-        .startup-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid var(--primary-light);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .startup-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
+.startups-section {
+    background: white;
+    padding: 120px 40px;
+}
+
+.startups-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    justify-content: center;
+}
+
+.startup-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid var(--primary-light);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.startup-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .startups-grid {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .startups-grid {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+    }
+    
+    .startups-section {
+        padding: 80px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .startups-grid {
+        max-width: 90%;
+    }
+    
+    .startup-card {
+        max-width: 100%;
+    }
+}
+Last edited just now
         
         .startup-header {
-            padding: 25px;
+            padding: 50px;
             border-bottom: 1px solid var(--primary-light);
             display: flex;
+            margin-left: 30px;
             align-items: center;
             gap: 15px;
         }
         
         .startup-logo {
+            margin-top: 20px;
             width: 60px;
             height: 60px;
+            margin-left: 25px;
             border-radius: 10px;
             overflow: hidden;
             background: var(--primary-light);
@@ -1590,12 +1622,14 @@
         
         .startup-title h3 {
             font-size: 1.4rem;
+            margin-left: 25px;
             color: var(--secondary);
             margin-bottom: 5px;
         }
         
         .startup-title p {
             color: var(--primary);
+            margin-left: 25px;
             font-size: 0.9rem;
             font-weight: 500;
         }
