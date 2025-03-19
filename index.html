@@ -4389,7 +4389,7 @@ blockquote {
             </div>
 
             <div class="event-media">
-                <img src="/api/placeholder/800/400" alt="New Hampshire Experience">
+                <img src="images/nh.png" alt="New Hampshire Experience">
             </div>
 
             <p class="event-description">
@@ -4424,7 +4424,7 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
             </div>
 
             <div class="event-media">
-                <img src="/api/placeholder/800/400" alt="New Hampshire Experience">
+                <img src="images/vizag.png" alt="New Hampshire Experience">
             </div>
 
             <p class="event-description">
@@ -4468,7 +4468,7 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
             </div>
 
             <div class="event-media">
-                <img src="/api/placeholder/800/400" alt="New Hampshire Experience">
+                <img src="images/vegas.png" alt="New Hampshire Experience">
             </div>
 
             <p class="event-description">
@@ -4490,7 +4490,7 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
             </div>
 
             <div class="event-media">
-                <img src="/api/placeholder/800/400" alt="New Hampshire Experience">
+                <img src="images/mayo.png" alt="New Hampshire Experience">
             </div>
 
             <p class="event-description">
@@ -4513,7 +4513,7 @@ This experience expanded my focus beyond diabetes, highlighting the need for AI-
             </div>
 
             <div class="event-media">
-                <img src="/api/placeholder/800/400" alt="New Hampshire Experience">
+                <img src="images/newyork.png" alt="New Hampshire Experience">
             </div>
 
             <p class="event-description">
@@ -4934,7 +4934,7 @@ This experience expanded my focus beyond diabetes, highlighting the need for AI-
     </a>
     
 
-    <a href="Harshini_Donepudi_1:20:2025.pdf" download class="resume-download">
+    <a href="Harshini_Donepudi_3:19:2025.pdf" download class="resume-download">
         <i class="fas fa-file-download"></i>
         Download Resume
     </a>
@@ -5389,59 +5389,366 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="section-header">
-            <h2>Let's Connect</h2>
-            <p>Have a project in mind? Let's discuss how we can work together</p>
+    <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="section-header">
+        <h2>Let's Connect</h2>
+        <p>Have a project in mind? Let's discuss how we can work together</p>
+    </div>
+    <div class="contact-container">
+        <div class="contact-form-card">
+            <h2 class="gradient-text">Send a Message</h2>
+            <form method="POST" id="form" class="contact-form">
+                <input type="hidden" name="access_key" value="5558b6c8-e4f1-4fc7-b130-4a2d63a1df1b">
+                <input type="hidden" name="botcheck" class="hidden" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-input"
+                        placeholder="Your name"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-input"
+                        placeholder="your@email.com"
+                        required
+                    >
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="subject">Subject</label>
+                    <select
+                        id="subject"
+                        name="subject"
+                        class="form-input"
+                    >
+                        <option value="">Select a subject</option>
+                        <option>Research</option>
+                        <option>Projects</option>
+                        <option>Services</option>
+                        <option>Job opportunity</option>
+                        <option>General Question</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        class="form-input"
+                        placeholder="Your message"
+                        required
+                    ></textarea>
+                </div>
+                <button type="submit" class="submit-button">
+                    Send Message
+                </button>
+                <div id="result" class="form-status"></div>
+            </form>
         </div>
-        <div class="contact-form">
-            <!-- Secure Contact Form -->
-            <form 
-            action="https://formsubmit.co/hsd39@cornell.edu" 
-            method="POST"
-            class="contact-form">
-            
-            <!-- Redirect to the same page -->
-            <input type="hidden" name="_next" value="https://yourusername.github.io/#contact?success=true">
-            
-            <!-- Other security measures -->
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="New Portfolio Contact">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
-        
-            <!-- Form Fields -->
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required>
-            </div>
-        
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="5" required></textarea>
-            </div>
-        
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
-            
+    </div>
+    <div id="success-popup" class="success-popup">
+        <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Message Sent Successfully!</h3>
+            <p>Thank you for reaching out. I'll get back to you soon.</p>
+            <button onclick="closeSuccessPopup()" class="close-btn">Close</button>
         </div>
-        <div id="success-popup" class="success-popup">
-            <div class="success-content">
-                <i class="fas fa-check-circle"></i>
-                <h3>Message Sent Successfully!</h3>
-                <p>Thank you for reaching out. I'll get back to you soon.</p>
-                <button onclick="closeSuccessPopup()" class="close-btn">Close</button>
-            </div>
-        </div>
-        
-        
-        
+    </div>
+</section>
+
+<style>
+    .contact-section {
+        padding: 100px 20px;
+        background: var(--background);
+        position: relative;
+    }
     
+    .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .contact-form-card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(82, 113, 255, 0.1);
+    }
+    
+    .contact-form-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gradient-text {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+        background: linear-gradient(to right,  #5271ff,#b39ddb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+    }
+    
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .form-label {
+        font-weight: 500;
+        color: var(--secondary);
+    }
+    
+    .form-input {
+        padding: 12px 15px;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        background: #f8fafc;
+    }
+    
+    .form-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(82, 113, 255, 0.15);
+    }
+    
+    .submit-button {
+        background: var(--primary);
+        color: white;
+        padding: 14px 25px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+    
+    .submit-button:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(82, 113, 255, 0.3);
+    }
+    
+    .form-status {
+        text-align: center;
+        margin-top: 15px;
+        font-weight: 500;
+    }
+    
+    .form-status.success {
+        color: #10b981;
+    }
+    
+    .form-status.error {
+        color: #ef4444;
+    }
+    
+    .success-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .success-popup.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .success-content {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        text-align: center;
+        max-width: 400px;
+        transform: translateY(30px);
+        transition: transform 0.4s ease;
+    }
+    
+    .success-popup.show .success-content {
+        transform: translateY(0);
+    }
+    
+    .success-content i {
+        font-size: 3rem;
+        color: #10b981;
+        margin-bottom: 20px;
+    }
+    
+    .success-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--secondary);
+    }
+    
+    .success-content p {
+        color: var(--text-light);
+        margin-bottom: 20px;
+    }
+    
+    .close-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .close-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+        .contact-form-card {
+            padding: 30px 20px;
+        }
+        
+        .gradient-text {
+            font-size: 1.5rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .contact-section {
+            padding: 60px 15px;
+        }
+        
+        .contact-form-card {
+            padding: 25px 15px;
+        }
+        
+        .gradient-text {
+            font-size: 1.3rem;
+        }
+        
+        .submit-button {
+            padding: 12px 20px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Form submission handler
+        const form = document.getElementById('form');
+        const result = document.getElementById('result');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = {};
+            
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            
+            const json = JSON.stringify(object);
+            
+            result.innerHTML = "Sending...";
+            
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.classList.add('success');
+                    result.innerHTML = json.message;
+                    form.reset();
+                    
+                    // Show success popup
+                    document.getElementById('success-popup').classList.add('show');
+                    
+                    // Hide result message after popup is shown
+                    setTimeout(() => {
+                        result.innerHTML = "";
+                        result.classList.remove('success');
+                    }, 1000);
+                } else {
+                    console.log(response);
+                    result.classList.add('error');
+                    result.innerHTML = json.message;
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.classList.add('error');
+                result.innerHTML = "Something went wrong!";
+            })
+            .finally(() => {
+                setTimeout(() => {
+                    result.innerHTML = "";
+                    result.classList.remove('error', 'success');
+                }, 5000);
+            });
+        });
+        
+        // Check URL for success parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            document.getElementById('success-popup').classList.add('show');
+            
+            // Remove the success parameter from URL
+            const url = new URL(window.location);
+            url.searchParams.delete('success');
+            window.history.replaceState({}, '', url);
+        }
+    });
+    
+    // Function to close success popup
+    function closeSuccessPopup() {
+        document.getElementById('success-popup').classList.remove('show');
+    }
+</script>
 
     </section>
 
