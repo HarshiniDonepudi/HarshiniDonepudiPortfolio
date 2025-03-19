@@ -2979,6 +2979,103 @@
     animation: gameCoin 2s infinite;
 }
 
+
+<!-- Enhanced CSS for Project Info Tooltip -->
+
+
+.project-card .project-links .info-btn:hover {
+    background: #e0e7ff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project-card .project-links .info-btn {
+    background: #f0f4ff;
+    color: #5271ff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative; /* For tooltip positioning */
+}
+
+
+
+.contact-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #2c3e50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    margin-bottom: 10px;
+    width: auto;
+    min-width: 170px;
+    max-width: 220px;
+    text-align: center;
+    line-height: 1.4;
+    white-space: normal;
+    pointer-events: none; /* Ensures the tooltip doesn't interfere with mouse events */
+}
+
+.contact-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: #2c3e50 transparent transparent transparent;
+}
+
+/* Desktop hover behavior */
+@media (hover: hover) {
+    .info-btn:hover .contact-tooltip {
+        visibility: visible;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    
+    .info-btn:not(:hover) .contact-tooltip {
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(-50%) translateY(10px);
+    }
+}
+
+.private-badge {
+    display: inline-block;
+    background: #f0f4ff;
+    color: #5271ff;
+    border: 1px solid rgba(82, 113, 255, 0.3);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+/* Tooltip visible class for JavaScript toggle */
+.contact-tooltip.visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 @keyframes gameCharacter {
     0%, 100% {
         transform: translateX(0) translateY(0);
@@ -3981,6 +4078,47 @@ blockquote {
     font-style: italic;
 }
 
+    .simple-link-section {
+        background: linear-gradient(135deg, #f0f4ff, #e6e9ff);
+        padding: 80px 40px;
+        text-align: center;
+    }
+    
+    .link-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+    
+    .link-container p {
+        margin-bottom: 25px;
+        color: var(--text-light);
+        font-size: 1.1rem;
+    }
+    
+    .beyond-link {
+        display: inline-block;
+        padding: 15px 30px;
+    }
+    
+    @media (max-width: 768px) {
+        .simple-link-section {
+            padding: 60px 20px;
+        }
+        
+        .link-container {
+            padding: 25px 20px;
+        }
+        
+        .link-container p {
+            font-size: 1rem;
+        }
+    }
+
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .hobby-content {
@@ -4097,6 +4235,42 @@ blockquote {
         height: 80px;
         font-size: 0.9rem;
     }
+}
+.back-to-top {
+    position: fixed;
+    bottom: 100px; /* Positioned above the resume button */
+    right: 30px;
+    background:  var(--primary);;
+    color: white;
+    padding: 15px 13px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(82, 113, 255, 0.3);
+}
+
+.back-to-top i {
+    font-size: 1.2rem;
+}
+
+/* Optional: Hide the button when at the top of the page */
+.back-to-top.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
     </style>
 </head>
@@ -4298,8 +4472,9 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
             </div>
 
             <p class="event-description">
-                Returning to the U.S., I expanded my focus beyond diabetes and delved into AI-driven healthcare solutions. My goal was clear: to leverage machine learning and predictive analytics to transform chronic disease management, food analysis, and personalized medicine. This was also when I began working on Insulocarb, exploring new technological advancements to enhance AI-driven nutrition and metabolic health solutions.
-            </p>
+                Returning to the U.S., I expanded my focus beyond diabetes and delved into AI-driven healthcare solutions. My goal was clear: to leverage machine learning and predictive analytics to transform chronic disease management, food analysis, and personalized medicine.
+
+                This was also when I began working on Insulocarb, a project aimed at optimizing nutrition and metabolic health for individuals with diabetes. Recognizing that food plays a critical role in glucose management, I explored AI-powered food recognition models, automated insulin delivery optimizations, and predictive algorithms for glycemic response. The goal was to move beyond the trial-and-error approach of diabetes management, creating data-driven solutions for personalized nutrition and insulin adjustments to eliminate the guessing game and enter the startup world.            </p>
 
        
 
@@ -4307,10 +4482,10 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
         </div>
         <div class="event-content" id="event4">
             <div class="event-content-header">
-                <h2>The Beginning</h2>
+                <h2>Clinical Integration & Research</h2>
                 <div class="location">
                     <i class="fas fa-map-marker-alt"></i>
-                    New Hampshire, USA
+                    Rochester, MN, USA
                 </div>
             </div>
 
@@ -4319,43 +4494,21 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
             </div>
 
             <p class="event-description">
-                My journey into healthcare technology began in the scenic landscapes of New Hampshire. 
-                Here, I discovered the incredible potential of combining medical knowledge with technological innovation. 
-                Working closely with healthcare providers, I gained firsthand experience in understanding the challenges 
-                and opportunities in modern healthcare delivery.
-            </p>
+                Growing up, Mayo Clinic felt larger than life. When my sister worked there as a research assistant, I heard firsthand about groundbreaking discoveries that shaped patient care. Inspired by its impact, I dreamed of contributing to research that could change lives. That opportunity came when I joined Mayo Clinic, working on AI-driven predictive models for Alzheimer’s, diabetes, and medical imaging applications.</p> 
+              <p class="event-description"> One of my most impactful projects was studying the link between Alzheimer’s and diabetes, exploring how metabolic health affects neurological decline. I developed AI models to detect early cognitive decline in diabetic patients, reinforcing the role of predictive analytics in disease prevention. Collaborating with radiologists, I built a breast cancer imaging model to improve early detection using AI. This introduced me to OMICs—integrating genomics, proteomics, and metabolomics into AI-driven healthcare. I also worked on multi-modal disease prediction models, combining medical imaging, lab results, and genetic data to advance precision medicine.
 
-            <div class="event-highlights">
-                <h3>Key Highlights</h3>
-                <ul class="highlights-list">
-                    <li>Completed advanced medical informatics training</li>
-                    <li>Collaborated with local clinics on digital health initiatives</li>
-                    <li>Developed first prototype of AI-driven diagnostic tool</li>
-                    <li>Established connections with healthcare technology pioneers</li>
-                </ul>
-            </div>
+This experience expanded my focus beyond diabetes, highlighting the need for AI-driven diagnostics across multiple diseases.
+</p>
 
-            <div class="event-impact">
-                <div class="impact-stat">
-                    <h4>20+</h4>
-                    <p>Projects</p>
-                </div>
-                <div class="impact-stat">
-                    <h4>50+</h4>
-                    <p>Patients</p>
-                </div>
-                <div class="impact-stat">
-                    <h4>3</h4>
-                    <p>Publications</p>
-                </div>
-            </div>
+         
+
         </div>
         <div class="event-content" id="event5">
             <div class="event-content-header">
-                <h2>The Beginning</h2>
+                <h2>Healthcare Revolution</h2>
                 <div class="location">
                     <i class="fas fa-map-marker-alt"></i>
-                    New Hampshire, USA
+                    New York, NY, USA
                 </div>
             </div>
 
@@ -4364,21 +4517,14 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
             </div>
 
             <p class="event-description">
-                My journey into healthcare technology began in the scenic landscapes of New Hampshire. 
-                Here, I discovered the incredible potential of combining medical knowledge with technological innovation. 
-                Working closely with healthcare providers, I gained firsthand experience in understanding the challenges 
-                and opportunities in modern healthcare delivery.
+                At Cornell Tech, I’ve had the opportunity to explore the many pillars of health tech, extending beyond AI and machine learning into medical devices, digital therapeutics, clinical operations, and health policy. Each experience has shaped my understanding of how technology can transform healthcare from multiple angles.
+
+                I’ve worked with Quest Diagnostics, GE Healthcare, and Johnson & Johnson, applying predictive analytics, diagnostics, and AI-powered solutions to improve patient outcomes. At Weill Cornell Medicine, I contributed to the Donor AI project, optimizing organ donation systems with AI, and worked on AI-driven emergency medicine services, enhancing response times and triage efficiency. Alongside this, I'm Building Juggl, a startup focused on balancing work productivity and well-being, tackling mental health challenges through AI-driven insights.
+                
+                Being part of these different facets of health tech has given me a holistic view of the industry, from research and development to real-world clinical applications and startup innovation. Here I am today, doing a master's in Health tech from Cornell, pushing boundaries at the intersection of AI, clinical care, and healthcare innovation—excited to see where my story takes me next..
             </p>
 
-            <div class="event-highlights">
-                <h3>Key Highlights</h3>
-                <ul class="highlights-list">
-                    <li>Completed advanced medical informatics training</li>
-                    <li>Collaborated with local clinics on digital health initiatives</li>
-                    <li>Developed first prototype of AI-driven diagnostic tool</li>
-                    <li>Established connections with healthcare technology pioneers</li>
-                </ul>
-            </div>
+
 
             <div class="event-impact">
                 <div class="impact-stat">
@@ -4386,12 +4532,12 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                     <p>Projects</p>
                 </div>
                 <div class="impact-stat">
-                    <h4>50+</h4>
+                    <h4>350+</h4>
                     <p>Patients</p>
                 </div>
                 <div class="impact-stat">
-                    <h4>3</h4>
-                    <p>Publications</p>
+                    <h4>2</h4>
+                    <p>Startups</p>
                 </div>
             </div>
         </div>
@@ -4408,149 +4554,171 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
 
         <div class="work-experience">
             <!-- Company 1: Mayo Clinic -->
-            <div class="company-card">
-                <div class="company-logo">
-                    <img src="images/Quest-Diagnostics-logo.jpg" alt="Mayo Clinic Logo"width="175" height="225">
-                </div>
-                <div class="company-info">
-                    <div class="company-header">
-                        <div class="company-title">
-                            <h3>Quest Diagnostics</h3>
-                            <div class="role">Data Scientist</div>
-                        </div>
-                        <div class="duration">Sept 2024 - Present</div>
-                    </div>
-                    <p class="company-description">
-                        Leading AI research initiatives focused on improving healthcare diagnostics and predicitions through innovative solutions.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Deep Learning</span>
-                    </div>
-                </div>
-            </div>
-            <div class="company-card">
-                <div class="company-logo">
-                    <img src="images/Untitled 2.png" alt="Mayo Clinic Logo"width="220" height="80">
-                </div>
-                <div class="company-info">
-                    <div class="company-header">
-                        <div class="company-title">
-                            <h3>Weill Cornell Medicine</h3>
-                            <div class="role">Machine Learning Researcher - Sabancu Lab</div>
-                        </div>
-                        <div class="duration">Sept 2023 - Jan 2024</div>
-                    </div>
-                    <p class="company-description">
-                        Leading AI research initiatives focused on improving healthcare diagnostics and patient care through innovative technology solutions.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Pytorch</span>
-                        <span class="tech-tag">Medical Imaging</span>
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">DICOM</span>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Company 2: Mount Sinai -->
-            <div class="company-card">
-                <div class="company-logo">
-                    <img src="images/GE_HealthCare_logo_2023.png" alt="Mount Sinai Logo" width="220" height="60">
-                </div>
-                <div class="company-info">
-                    <div class="company-header">
-                        <div class="company-title">
-                            <h3>GE Healthcare</h3>
-                            <div class="role">EEDP Software Intern</div>
-                        </div>
-                        <div class="duration">May 2024 - Aug 2024</div>
-                    </div>
-                    <p class="company-description">
-                        Implemented machine learning models for patient outcome prediction and resource optimization.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">R</span>
-                        <span class="tech-tag">SQL</span>
-                        <span class="tech-tag">Healthcare Analytics</span>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="company-card">
-                <div class="company-logo">
-                    <img src="images/2217.png" alt="Mayo Clinic Logo" width="210" height="110">
-                </div>
-                <div class="company-info">
-                    <div class="company-header">
-                        <div class="company-title">
-                            <h3>Johnson and Johnson</h3>
-                            <div class="role">Commerical Data Science Intern</div>
-                        </div>
-                        <div class="duration">Jan 2024 - Aug 2024</div>
-                    </div>
-                    <p class="company-description">
-                        Leading AI research initiatives focused on improving healthcare diagnostics and patient care through innovative technology solutions.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">GenAI</span>
-                        <span class="tech-tag">LLM's</span>
-                        <span class="tech-tag">Data Analysis</span>
-                    </div>
-                </div>
-            </div>
-            <div class="company-card">
-                <div class="company-logo">
-                    <img src="images/Mayo-Clinic-Logo-2001-1024x623-1.webp" alt="Mayo Clinic Logo" width="225" height="70">
-                </div>
-                <div class="company-info">
-                    <div class="company-header">
-                        <div class="company-title">
-                            <h3>Mayo Clinic</h3>
-                            <div class="role">Biostatistics and Machine Learning intern</div>
-                        </div>
-                        <div class="duration">March 2023 - Jan 2024</div>
-                    </div>
-                    <p class="company-description">
-                        Leading AI research initiatives focused on improving healthcare diagnostics and patient care through innovative technology solutions.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">R</span>
-                        <span class="tech-tag">TensorFlow</span>
-                        <span class="tech-tag">Deep Learning</span>
-                        <span class="tech-tag">Medical Imaging</span>
-                        <span class="tech-tag">Genomics</span>
-                    </div>
-                </div>
-            </div>
-            <div class="company-card">
-                <div class="company-logo">
-                    <img src="images/Untitled.png" alt="Company Logo" width="225" height="70">
-                </div>
-                <div class="company-info">
-                    <div class="company-header">
-                        <div class="company-title">
-                            <h3>Shobnobi Software</h3>
-                            <div class="role">Technology Developer</div>
-                        </div>
-                        <div class="duration">Jan 2023 - May 2023</div>
-                    </div>
-                    <p class="company-description">
-                        Developed AI solutions for medical image analysis and diagnostic support systems.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-tag">Software Development</span>
-                        <span class="tech-tag">SDLC</span>
-                        <span class="tech-tag">Predictive Modelling</span>
-                        <span class="tech-tag">NLP</span>
-                    </div>
-                </div>
-            </div>
-    
+            <!-- Work Experience Content for Beyond Code Page (Without Tech Mentions in Text) -->
 
+<!-- Quest Diagnostics -->
+<div class="company-card">
+    <div class="company-logo">
+        <img src="images/Quest-Diagnostics-logo.jpg" alt="Quest Diagnostics Logo" width="175" height="225" loading="lazy">
+    </div>
+    <div class="company-info">
+        <div class="company-header">
+            <div class="company-title">
+                <h3>Quest Diagnostics</h3>
+                <div class="role">Data Scientist</div>
+            </div>
+            <div class="duration">Sept 2024 - Present</div>
         </div>
+        <p class="company-description">
+            Developing predictive models for healthcare risk analysis and creating data pipelines for medical datasets. Building cloud-based AI solutions to transform laboratory data into actionable clinical insights.
+        </p>
+        <div class="tech-stack">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">PySpark</span>
+            <span class="tech-tag">Snowflake</span>
+            <span class="tech-tag">GCP</span>
+            <span class="tech-tag">NLP</span>
+        </div>
+    </div>
+</div>
+
+<!-- Weill Cornell Medicine -->
+<div class="company-card">
+    <div class="company-logo">
+        <img src="images/Untitled 2.png" alt="Weill Cornell Logo" width="220" height="80" loading="lazy">
+    </div>
+    <div class="company-info">
+        <div class="company-header">
+            <div class="company-title">
+                <h3>Weill Cornell Medicine</h3>
+                <div class="role">Machine Learning Researcher</div>
+            </div>
+            <div class="duration">Sept 2023 - Present</div>
+        </div>
+        <p class="company-description">
+            Developing AI-driven medical imaging solutions to improve heart donor-recipient matching. Integrating natural language processing for clinical text analysis and designing real-time medical image processing pipelines.
+        </p>
+        <div class="tech-stack">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">Medical Imaging</span>
+            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">DICOM</span>
+            <span class="tech-tag">Azure</span>
+        </div>
+    </div>
+</div>
+
+<!-- GE Healthcare -->
+<div class="company-card">
+    <div class="company-logo">
+        <img src="images/GE_HealthCare_logo_2023.png" alt="GE Healthcare Logo" width="220" height="60" loading="lazy">
+    </div>
+    <div class="company-info">
+        <div class="company-header">
+            <div class="company-title">
+                <h3>GE Healthcare</h3>
+                <div class="role">EEDP Software Intern</div>
+            </div>
+            <div class="duration">May 2024 - Aug 2024</div>
+        </div>
+        <p class="company-description">
+            Optimized cloud resources for GE's Portrait mobile platform using modern financial operations methodologies. Created automated analysis dashboards that improved operational efficiency by 15%.
+        </p>
+        <div class="tech-stack">
+            <span class="tech-tag">DevOps</span>
+            <span class="tech-tag">FinOps</span>
+            <span class="tech-tag">SDLC</span>
+            <span class="tech-tag">TICK</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">CI/CD</span>
+        </div>
+    </div>
+</div>
+
+<!-- Johnson and Johnson -->
+<div class="company-card">
+    <div class="company-logo">
+        <img src="images/2217.png" alt="Johnson & Johnson Logo" width="210" height="110" loading="lazy">
+    </div>
+    <div class="company-info">
+        <div class="company-header">
+            <div class="company-title">
+                <h3>Johnson and Johnson</h3>
+                <div class="role">Commercial Data Science Intern</div>
+            </div>
+            <div class="duration">Jan 2024 - May 2024</div>
+        </div>
+        <p class="company-description">
+            Built a multimodal AI system that transformed complex healthcare claims and pharmaceutical data into compelling data stories. Created automated narrative generation that improved decision-making and enhanced Salesforce outputs by 25%.
+        </p>
+        <div class="tech-stack">
+            <span class="tech-tag">GenAI</span>
+            <span class="tech-tag">LLMs</span>
+            <span class="tech-tag">SHAP</span>
+            <span class="tech-tag">LangChain</span>
+            <span class="tech-tag">AWS</span>
+        </div>
+    </div>
+</div>
+
+<!-- Mayo Clinic -->
+<div class="company-card">
+    <div class="company-logo">
+        <img src="images/Mayo-Clinic-Logo-2001-1024x623-1.webp" alt="Mayo Clinic Logo" width="225" height="70" loading="lazy">
+    </div>
+    <div class="company-info">
+        <div class="company-header">
+            <div class="company-title">
+                <h3>Mayo Clinic</h3>
+                <div class="role">Biostatistics and Machine Learning Intern</div>
+            </div>
+            <div class="duration">March 2023 - Jan 2024</div>
+        </div>
+        <p class="company-description">
+            Developed AI systems for early detection of Alzheimer's disease, diabetes complications, and breast cancer. Combined medical imaging with patient data to improve diagnostic accuracy by 4%, helping patients receive earlier treatment.
+        </p>      
+        <div class="tech-stack">
+            <span class="tech-tag">PyTorch</span>
+            <span class="tech-tag">TensorFlow</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">R</span>
+            <span class="tech-tag">OMICs</span>
+            <span class="tech-tag">Medical Imaging</span>
+            <span class="tech-tag">Deep Learning</span>
+            <span class="tech-tag">HPC</span>
+        </div>
+    </div>
+</div>
+
+<!-- Shibnobi -->
+<div class="company-card">
+    <div class="company-logo">
+        <img src="images/Untitled.png" alt="Shibnobi Logo" width="225" height="70" loading="lazy">
+    </div>
+    <div class="company-info">
+        <div class="company-header">
+            <div class="company-title">
+                <h3>Shibnobi Software</h3>
+                <div class="role">Technology Developer</div>
+            </div>
+            <div class="duration">August 2022 - Jan 2024</div>
+        </div>
+        <p class="company-description">
+            Developed cross-platform applications for multiple projects, implementing gaming-based predictive analytics and user engagement tools. Created data visualization dashboards and language models to enhance content recommendations.
+        </p>
+        <div class="tech-stack">
+            <span class="tech-tag">iOS</span>
+            <span class="tech-tag">Android</span>
+            <span class="tech-tag">MERN</span>
+            <span class="tech-tag">SDLC</span>
+            <span class="tech-tag">Analytics</span>
+            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">Testing</span>
+        </div>
+    </div>
+</div>
     </section>
     
     <!-- Projects Section with Links -->
@@ -4561,50 +4729,38 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
         </div>
         <div class="project-grid">
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/Untitled 7.png')"></div>
                 <div class="project-content">
                     <h3>Insulocarb</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <p>AI-powered app for diabetics that analyzes meals and recommends insulin dosage through computer vision technology.</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://www.youtube.com/watch?v=hlnuYX6qn_Y" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
                             Live Demo
                         </a>
-                        <a href="#" class="project-link code">
-                            <i class="fab fa-github"></i>
-                            View Code
+                        <a href="#" class="info-btn">
+                            <i class="fas fa-info-circle"></i>
+                            Project Info
+                            <span class="contact-tooltip">This is a private project. Please contact me for more info.</span>
                         </a>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <span class="private-badge">Private Repository</span>
                     </div>
                 </div>
             </div>
+           
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
-                <div class="project-content">
-                    <h3>Wound Whisperer</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link demo">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link code">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/istockphoto-467463476-612x612.jpg')"></div>
                 <div class="project-content">
                     <h3>Clinicial Fact Checker</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <p>AI-driven system that verifies medical claims against trusted sources to ensure accuracy in clinical documentation.</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://docs.google.com/presentation/d/10_j8g1AYUCXguO5Bv76W65YkgLQidaH2xSe2-FZFxRg/edit#slide=id.g31b576ab14f_1_75" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
-                            Live Demo
+                            Learn More
                         </a>
-                        <a href="#" class="project-link code">
+                        <a href="https://github.com/shubham-rateria/cs-5787-final-project" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4612,16 +4768,16 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/Brain-Tumor-Overview-1024x420.jpeg')"></div>
                 <div class="project-content">
                     <h3>AI powered Glioma Treatment</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <p>Deep learning framework for analyzing brain scans to assist in precision treatment planning for glioma patients.</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://docs.google.com/presentation/d/1X86vIQN-lgRE2vhdB3JpliN83Nvlv39_s6YQmoELNNo/edit?usp=sharing" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
-                            Live Demo
+                            Learn More
                         </a>
-                        <a href="#" class="project-link code">
+                        <a href="https://github.com/tanvir10029/ML-for-Glioblastoma-Treatment-Plan-Decisions" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4629,16 +4785,16 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/healthcare-IoT-app-development-main-banner.jpg')"></div>
                 <div class="project-content">
                     <h3>Lions Cancer Hospital App</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <p>Healthcare management platform for cancer patients that streamlines appointments, records and treatment tracking.</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://docs.google.com/document/d/1aH2fRp_Ha4fDBwfvY7ctYgIwKkKvWsc5-EVKCdfb9uw/edit?usp=sharing" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
-                            Live Demo
+                            Learn More
                         </a>
-                        <a href="#" class="project-link code">
+                        <a href="https://github.com/HarshiniDonepudi/bss_admin-patient" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4646,16 +4802,36 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/empower.jpg')"></div>
                 <div class="project-content">
                     <h3>Empower your flow</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <p>VR-based therapy system designed to reduce menstrual pain through immersive environments and guided relaxation</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
+                        <a href="VR_Therapy_for_Menstrual_Relief__An_LLM_Approach (1).pdf" target="_self" class="project-link demo">
+                            <i class="fas fa-file-pdf"></i>
+                            Learn More
                         </a>
-                        <a href="#" class="project-link code">
+                        
+                        <a href="https://github.com/Khushibhansali/VR-Therapy-for-Menstrual-Relief-An-LLM-Approach" class="project-link code">
+                            <i class="fab fa-github"></i>
+                            View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+          
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('images/750-Heart-transplant-AI---GettyImages-938049200.jpg')"></div>
+                <div class="project-content">
+                    <h3>Heart Transplant matching</h3>
+                    <p>AI system for heart transplant matching using 3D volumetric analysis of cardiac structures</p>
+                    <div class="project-links">
+                        <a href="https://docs.google.com/presentation/d/1RU_EeaHYhHHPhG44ysCNKMPRT9q35lg3z8BtszzdNdY/edit#slide=id.g23b15a07a03_0_183" class="project-link demo">
+                            <i class="fas fa-external-link-alt"></i>
+                            Learn More
+                        </a>
+                        <a href="https://github.com/HarshiniDonepudi/HeartTransplant" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4663,16 +4839,16 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/2a1af800-7c69-44a5-a94c-70a4a9c4d2b0.jpg')"></div>
                 <div class="project-content">
-                    <h3>Ovasense</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <h3>SkinFusion</h3>
+                    <p>Computer vision algorithm that precisely matches foundation makeup to skin tones, minimizing errors for diverse users</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://docs.google.com/presentation/d/1Qj50ogrViCjXxbhn1TZL2HYnNYQWA0ZBx5EzPqvyOPM/edit?usp=sharing" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
-                            Live Demo
+                             Learn More
                         </a>
-                        <a href="#" class="project-link code">
+                        <a href="https://github.com/HarshiniDonepudi/SkinFusionBW" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4680,16 +4856,16 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/wirebends.jpg')"></div>
                 <div class="project-content">
-                    <h3>Ovasense</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <h3>Sketch2Wire</h3>
+                    <p>Transform sketches into machine commands using computer vision and SVG conversion for seamless wire bending.</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://docs.google.com/document/d/1t0gqt0lc9Wwqmj1OyeJFkZ2aw7sMqeSocW6OoywRvRo/edit?tab=t.0" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
-                            Live Demo
+                            Learn More
                         </a>
-                        <a href="#" class="project-link code">
+                        <a href="https://github.com/bisson2000/INFO5380-HW1" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4697,16 +4873,16 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/Digital-Fab-OG.jpg')"></div>
                 <div class="project-content">
-                    <h3>Ovasense</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <h3>WireBender3D</h3>
+                    <p>Visual wire-bending design tool that eliminates coding and provides manufacturability feedback—making industrial wire-bending accessible to non-technical users</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
+                        <a href="https://www.youtube.com/watch?v=ovR8ysb_PhI" class="project-link demo">
                             <i class="fas fa-external-link-alt"></i>
                             Live Demo
                         </a>
-                        <a href="#" class="project-link code">
+                        <a href="https://github.com/bisson2000/INFO5380-HW2" class="project-link code">
                             <i class="fab fa-github"></i>
                             View Code
                         </a>
@@ -4714,24 +4890,48 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
                 </div>
             </div>
             <div class="project-card">
-                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-image" style="background-image: url('images/360_F_456514271_Ie8BPiSiI4y1gfu1GWvHsAVt6W7yzCL8.jpg')"></div>
                 <div class="project-content">
-                    <h3>Ovasense</h3>
-                    <p>Advanced machine learning system for early disease detection</p>
+                    <h3>Wound Whisperer</h3>
+                    <p>Computer vision system that detects, classifies and tracks wound healing progress to support clinical decision-making.</p>
                     <div class="project-links">
-                        <a href="#" class="project-link demo">
-                            <i class="fas fa-external-link-alt"></i>
-                            Live Demo
-                        </a>
-                        <a href="#" class="project-link code">
-                            <i class="fab fa-github"></i>
-                            View Code
-                        </a>
-                    </div>
+                    
+               
+                    <a href="#" class="info-btn">
+                        <i class="fas fa-info-circle"></i>
+                        Project Info
+                        <span class="contact-tooltip">This is a private project. Please contact me for more info.</span>
+                    </a>
                 </div>
+                <div style="margin-top: 15px;">
+                    <span class="private-badge">Private Repository</span>
+                </div>
+            </div>
+       
+        </div>
+        <div class="project-card">
+            <div class="project-image" style="background-image: url('images/istockphoto-1406896488-612x612.jpg')"></div>
+            <div class="project-content">
+                <h3>Ovasense</h3>
+                <p>AI system that detects PCOS patterns through sensor data, providing cycle predictions and metabolic alertsn</p>
+                <div class="project-links">
+                   
+                <a href="#" class="info-btn">
+                    <i class="fas fa-info-circle"></i>
+                    Project Info
+                    <span class="contact-tooltip">This is a private project. Please contact me for more info.</span>
+                </a>
+            </div>
+            <div style="margin-top: 15px;">
+                <span class="private-badge">Private Repository</span>
             </div>
         </div>
+    </div>
+        </div>
     </section>
+    <a href="#" id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
     
 
     <a href="Harshini_Donepudi_1:20:2025.pdf" download class="resume-download">
@@ -4758,6 +4958,49 @@ My first glimpse of health technology came through Rufus, the JDRF teddy bear, w
     </script>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const privateBadges = document.querySelectorAll('.private-badge');
+        
+        privateBadges.forEach(badge => {
+            // Handle click for mobile devices
+            badge.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent event from bubbling
+                const tooltip = this.querySelector('.contact-tooltip');
+                
+                // Close any open tooltips
+                document.querySelectorAll('.contact-tooltip.active').forEach(t => {
+                    if (t !== tooltip) {
+                        t.classList.remove('active');
+                        t.style.visibility = 'hidden';
+                        t.style.opacity = '0';
+                    }
+                });
+                
+                // Toggle this tooltip
+                tooltip.classList.toggle('active');
+                
+                if (tooltip.classList.contains('active')) {
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.opacity = '1';
+                    tooltip.style.transform = 'translateX(-50%) translateY(0)';
+                } else {
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.opacity = '0';
+                    tooltip.style.transform = 'translateX(-50%) translateY(10px)';
+                }
+            });
+        });
+        
+        // Close tooltips when clicking elsewhere
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.contact-tooltip.active').forEach(tooltip => {
+                tooltip.classList.remove('active');
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '0';
+                tooltip.style.transform = 'translateX(-50%) translateY(10px)';
+            });
+        });
+    });
 document.addEventListener('DOMContentLoaded', () => {
     const timelineEvents = document.querySelectorAll('.timeline-event');
     const timelineSidebar = document.querySelector('.timeline-sidebar');
@@ -4786,6 +5029,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the button
+    var backToTopButton = document.getElementById('back-to-top');
+    
+    // When the user clicks on the button, scroll to the top of the document
+    backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Optional: Show/hide the button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) { // Show button after scrolling down 300px
+            backToTopButton.classList.remove('hidden');
+        } else {
+            backToTopButton.classList.add('hidden');
+        }
+    });
+});
 </script>
 
     <!-- Startups Section -->
@@ -4809,7 +5074,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="startup-content">
                 <p class="startup-description">
-                    AI-driven platform for early disease detection using machine learning algorithms on medical imaging data.
+                    Revolutionizing diabetes management with AI-powered meal analysis that takes the guesswork out of insulin dosing, giving people with diabetes the freedom to enjoy food with confidence.
                 </p>
                 <div class="startup-metrics">
                     <div class="startup-metric">
@@ -4842,7 +5107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="startup-content">
                 <p class="startup-description">
-                    Healthcare IoT platform connecting medical devices for remote patient monitoring and improv.
+                    More than just a scheduler—a mental wellbeing guardian that combats burnout before it begins. By orchestrating your time with AI precision, Juggl ensures you maintain the work-life balance essential for long-term success and happiness.
                 </p>
                 <div class="startup-metrics">
                     <div class="startup-metric">
@@ -4965,21 +5230,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="star"><i class="fas fa-star"></i></span>
                 </div>
                 <p class="testimonial-content">
-                    "Working with Harshini on our patient monitoring system was 
-                    exceptional. Her expertise in AI and healthcare technology 
-                    helped us create a solution that has greatly improved our 
-                    patient care efficiency."
+                    "As the head of data science on our collaborative project, Harshini demonstrated exceptional leadership and technical expertise. Her innovative approach to healthcare analytics created solutions that our clinical team could immediately implement. Beyond her technical abilities, her insight into healthcare workflows and patient needs made her an invaluable partner. "
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="/api/placeholder/60/60" alt="Dr. Michael Chen">
-                    </div>
+                 
                     <div class="author-info">
                         <h4>Dr. Naz Wahab</h4>
-                        <p>Physcian, Wound Care Experts, Las vegas</p>
+                        <p>Physician, Wound Care Experts, Las Vegas</p>
                     </div>
                 </div>
             </div>
+            
+            <!-- Testimonial 2 -->
             <div class="testimonial-card">
                 <div class="testimonial-quote">"</div>
                 <div class="testimonial-rating">
@@ -4990,23 +5252,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="star"><i class="fas fa-star"></i></span>
                 </div>
                 <p class="testimonial-content">
-                    "Working with Harshini on our patient monitoring system was 
-                    exceptional. Her expertise in AI and healthcare technology 
-                    helped us create a solution that has greatly improved our 
-                    patient care efficiency."
+                    "During the pandemic, Harshini developed our hospital information system in record time. Her intuitive interface design reduced staff training time by 65% and eliminated critical data entry errors. The patient tracking module she built has become indispensable, managing over 15,000 records with remarkable efficiency."
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="/api/placeholder/60/60" alt="Dr. Michael Chen">
-                    </div>
+                  
                     <div class="author-info">
                         <h4>Dr. Uma Maheswarao</h4>
                         <p>Managing Director, Lions International Cancer Hospital</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Regular Testimonial 2 -->
+            
+            <!-- Testimonial 3 -->
             <div class="testimonial-card">
                 <div class="testimonial-quote">"</div>
                 <div class="testimonial-rating">
@@ -5017,23 +5274,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="star"><i class="fas fa-star"></i></span>
                 </div>
                 <p class="testimonial-content">
-                    "The AI-powered diagnostic tool developed by Harshini has 
-                    become an essential part of our clinical workflow. Her 
-                    understanding of healthcare needs and technical expertise 
-                    is truly remarkable."
+                    "Harshini's diabetes management application transformed our pediatric patient care. Parents report 78% better adherence to treatment plans, and we've seen a 40% reduction in emergency interventions. Her deep understanding of both the medical and emotional aspects of childhood diabetes created a solution that truly serves our patients' needs."
                 </p>
                 <div class="testimonial-author">
-                    <div class="author-image">
-                        <img src="/api/placeholder/60/60" alt="Dr. Emily Rodriguez">
-                    </div>
+                  
                     <div class="author-info">
-                        <h4>Dr. Mythili </h4>
-                        <p>Endocrynoligist, King George Hospital, President - Diabetic child society</p>
+                        <h4>Dr. Mythili</h4>
+                        <p>Endocrinologist, King George Hospital, President - Diabetic Child Society</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+            </div>
 </section>
 
 <script>
@@ -5065,388 +5316,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <h2>Life Beyond Code</h2>
         <p>Because there's more to me than semicolons and algorithms</p>
     </div>
-    
-    
-    <!-- Hobby Explorer - Interactive Tab System -->
-    <div class="hobby-explorer">
-        <div class="hobby-tabs">
-    
-            <div class="tab active" data-tab="cooking">
-                <div class="tab-icon">🍳</div>
-                <span>Cooking</span>
-            </div>
-            <div class="tab" data-tab="art">
-                <div class="tab-icon">🎨</div>
-                <span>Art & Gifts</span>
-            </div>
-        
-            <div class="tab" data-tab="community">
-                <div class="tab-icon">❤️</div>
-                <span>Giving Back</span>
-            </div>
-            <div class="tab" data-tab="travel">
-                <div class="tab-icon">✈️</div>
-                <span>Travel</span>
-            </div>
-        </div>
-        
-        <div class="hobby-content-wrapper">
- 
-            
-            <!-- Cooking Content -->
-            <div class="hobby-content active" id="cooking">
-                <div class="hobby-visuals">
-                    <div class="recipe-book">
-                        <div class="recipe-page left">
-                            <h4>Fusion AI Tacos</h4>
-                            <div class="recipe-img" style="background-image: url('/api/placeholder/150/100')"></div>
-                            <div class="ingredient">
-                                <span class="ingredient-name">Data-infused salsa</span>
-                                <span class="ingredient-amount">2 cups</span>
-                            </div>
-                            <div class="ingredient">
-                                <span class="ingredient-name">Neural network cheese</span>
-                                <span class="ingredient-amount">1/2 cup</span>
-                            </div>
-                            <div class="ingredient">
-                                <span class="ingredient-name">Deep learning sauce</span>
-                                <span class="ingredient-amount">3 tbsp</span>
-                            </div>
-                        </div>
-                        <div class="recipe-page right">
-                            <h4>Algorithm Cookies</h4>
-                            <div class="recipe-img" style="background-image: url('/api/placeholder/150/100')"></div>
-                            <div class="ingredient">
-                                <span class="ingredient-name">Sort-and-search sugar</span>
-                                <span class="ingredient-amount">1 cup</span>
-                            </div>
-                            <div class="ingredient">
-                                <span class="ingredient-name">Recursive chocolate</span>
-                                <span class="ingredient-amount">2 cups</span>
-                            </div>
-                            <div class="ingredient">
-                                <span class="ingredient-name">Binary butter</span>
-                                <span class="ingredient-amount">1 stick</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hobby-info">
-                    <h3>Culinary Code Chef</h3>
-                    <p>My kitchen is my second laboratory where I apply the same experimental mindset that drives my coding. I create fusion dishes that combine unexpected flavors – much like how I merge AI and healthcare in my professional life!</p>
-                    <div class="specialty-dishes">
-                        <div class="dish">
-                            <span class="dish-icon">🌮</span>
-                            <span class="dish-name">AI-Generated Tacos</span>
-                        </div>
-                        <div class="dish">
-                            <span class="dish-icon">🍜</span>
-                            <span class="dish-name">Neural Network Ramen</span>
-                        </div>
-                        <div class="dish">
-                            <span class="dish-icon">🍰</span>
-                            <span class="dish-name">Recursive Chocolate Cake</span>
-                        </div>
-                    </div>
-                    <div class="cooking-quote">"Cooking is just programming but for your taste buds!"</div>
-                </div>
-            </div>
-            
-            <!-- Art Content -->
-            <div class="hobby-content" id="art">
-                <div class="hobby-visuals">
-                    <div class="art-gift-showcase">
-                        <div class="showcase-container">
-                            <div class="art-side">
-                                <div class="canvas">
-                                    <div class="canvas-element dot1"></div>
-                                    <div class="canvas-element square1"></div>
-                                    <div class="canvas-element circle1"></div>
-                                    <div class="canvas-element triangle1"></div>
-                                </div>
-                                <div class="brush">
-                                    <div class="brush-handle"></div>
-                                    <div class="brush-bristles"></div>
-                                </div>
-                            </div>
-                            <div class="gift-side">
-                                <div class="gift-box">
-                                    <div class="gift-lid"></div>
-                                    <div class="gift-base"></div>
-                                    <div class="gift-ribbon-v"></div>
-                                    <div class="gift-ribbon-h"></div>
-                                    <div class="gift-bow"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hobby-info">
-                    <h3>Creative Arts & Personalized Gifting</h3>
-                    <p>Art is my form of meditation and expression. Whether I'm creating digital designs, hand-painted cards, or tech-inspired artwork, I find joy in the creative process. This creativity extends to personalized gift-making, where I combine technology and traditional crafts to create meaningful presents for friends and family.</p>
-                    
-                    <div class="art-categories">
-                        <div class="art-type">
-                            <div class="art-icon">🖌️</div>
-                            <div class="art-name">Digital Painting</div>
-                        </div>
-                        <div class="art-type">
-                            <div class="art-icon">🎨</div>
-                            <div class="art-name">Traditional Art</div>
-                        </div>
-                        <div class="art-type">
-                            <div class="art-icon">🎁</div>
-                            <div class="art-name">Custom Gifts</div>
-                        </div>
-                        <div class="art-type">
-                            <div class="art-icon">💻</div>
-                            <div class="art-name">Tech-Art Fusion</div>
-                        </div>
-                    </div>
-                    
-              
-                    
-                    <div class="creative-quote">"The best art and gifts come from a place of understanding—merging technology and creativity to express what words cannot."</div>
-                </div>
-            </div>
-            
-            
-            <!-- Travel Content -->
-            <div class="hobby-content" id="travel">
-                <div class="hobby-visuals">
-                    <div class="world-map">
-                        <div class="map-marker" style="top: 40%; left: 20%;" data-country="USA"></div>
-                        <div class="map-marker" style="top: 35%; left: 48%;" data-country="Italy"></div>
-                        <div class="map-marker" style="top: 55%; left: 75%;" data-country="Japan"></div>
-                        <div class="map-marker" style="top: 60%; left: 80%;" data-country="Australia"></div>
-                        <div class="map-marker" style="top: 30%; left: 90%;" data-country="Korea"></div>
-                        <div class="map-pin-info">
-                            <h4>Visited: <span id="country-name">Select a pin</span></h4>
-                            <p id="country-desc">Click on a pin to see details!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="hobby-info">
-                    <h3>Globe Trotter</h3>
-                    <p>My passport is my second most valuable possession (after my laptop, of course). Exploring diverse cultures fuels my creativity and broadens my perspective on global healthcare challenges.</p>
-                    <div class="travel-bucket-list">
-                        <h4>Bucket List:</h4>
-                        <div class="bucket-items">
-                            <div class="bucket-item">
-                                <input type="checkbox" id="item1" checked>
-                                <label for="item1">See the Northern Lights</label>
-                            </div>
-                            <div class="bucket-item">
-                                <input type="checkbox" id="item2">
-                                <label for="item2">Visit all 7 continents</label>
-                            </div>
-                            <div class="bucket-item">
-                                <input type="checkbox" id="item3">
-                                <label for="item3">Learn 5 languages</label>
-                            </div>
-                            <div class="bucket-item">
-                                <input type="checkbox" id="item4" checked>
-                                <label for="item4">Eat authentic ramen in Japan</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="travel-counter">
-                        <div class="counter-item">
-                            <div class="counter" data-count="18">0</div>
-                            <div class="counter-label">Countries</div>
-                        </div>
-                        <div class="counter-item">
-                            <div class="counter" data-count="42">0</div>
-                            <div class="counter-label">Cities</div>
-                        </div>
-                        <div class="counter-item">
-                            <div class="counter" data-count="3">0</div>
-                            <div class="counter-label">Languages</div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="hobby-content" id="community">
-                <div class="hobby-visuals">
-                    <div class="community-impact">
-                        <div class="impact-circle">
-                            <div class="impact-inner-circle">
-                                <div class="impact-icon">
-                                    <i class="fas fa-hands-helping"></i>
-                                </div>
-                            </div>
-                            <div class="impact-orbit">
-                                <div class="impact-satellite tech">
-                                    <i class="fas fa-laptop-code"></i>
-                                </div>
-                                <div class="impact-satellite education">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div class="impact-satellite health">
-                                    <i class="fas fa-heartbeat"></i>
-                                </div>
-                                <div class="impact-satellite environment">
-                                    <i class="fas fa-leaf"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hobby-info">
-                    <h3>Giving Back to the Community</h3>
-                    <p>Using my tech skills to make a positive impact is one of my greatest joys. From mentoring aspiring developers to contributing to healthcare NGOs, I believe in the power of technology to transform communities and create meaningful change.</p>
-                    
-                    <div class="initiatives-grid">
-                        <div class="initiative-card">
-                            <div class="initiative-icon">
-                                <i class="fas fa-chalkboard-teacher"></i>
-                            </div>
-                            <div class="initiative-info">
-                                <h4>Tech Mentorship</h4>
-                                <p>Guiding 10+ aspiring developers annually through free workshops and 1:1 mentoring sessions.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="initiative-card">
-                            <div class="initiative-icon">
-                                <i class="fas fa-hospital"></i>
-                            </div>
-                            <div class="initiative-info">
-                                <h4>Healthcare NGO Support</h4>
-                                <p>Developing data analysis tools for NGOs to improve access to healthcare in underserved communities.</p>
-                            </div>
-                        </div>
-                 
-                        
-                    
-                    </div>
-                    
-                    <div class="volunteer-hours">
-                        <div class="hours-chart">
-                            <div class="hours-bar">
-                                <div class="hours-fill" style="height: 80%">
-                                    <span class="hours-value">120+</span>
-                                </div>
-                                <span class="hours-label">Hours/Year</span>
-                            </div>
-                        </div>
-                        <div class="hours-description">
-                            <h4>Volunteer Commitment</h4>
-                            <p>I dedicate 120+ hours annually to volunteer work, believing that consistent engagement creates the most meaningful impact in communities.</p>
-                            <div class="impact-quote">"Technology is most powerful when it empowers others."</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
+    <div class="link-container">
+        <p>Want to know more about my interests, hobbies, and life outside of work?</p>
+        <a href="beyond.html" class="primary-btn beyond-link">Explore My Life Beyond Code</a>
     </div>
-    
-    <!-- Fun Quiz Section -->
-    <div class="fun-quiz">
-        <h3>Things You'd Never Guess About Me</h3>
-        <div class="quiz-container">
-            <div class="quiz-card">
-                <div class="quiz-front">
-                    <div class="question-mark">?</div>
-                    <p>I once coded for...</p>
-                    <span class="flip-prompt">Click to reveal</span>
-                </div>
-                <div class="quiz-back">
-                    <p>72 hours straight to finish a healthcare AI prototype - sustained purely by green tea and determination!</p>
-                </div>
-            </div>
-            <div class="quiz-card">
-                <div class="quiz-front">
-                    <div class="question-mark">?</div>
-                    <p>Secret talent:</p>
-                    <span class="flip-prompt">Click to reveal</span>
-                </div>
-                <div class="quiz-back">
-                    <p>I can recite 100 digits of pi while juggling three tennis balls. It's my party trick at tech conferences!</p>
-                </div>
-            </div>
-            <div class="quiz-card">
-                <div class="quiz-front">
-                    <div class="question-mark">?</div>
-                    <p>Weirdest food I've tried:</p>
-                    <span class="flip-prompt">Click to reveal</span>
-                </div>
-                <div class="quiz-back">
-                    <p>Chocolate-covered crickets in Thailand. They were surprisingly crunchy and protein-rich - like nature's potato chips!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
 
-    
-    <!-- Life Balance Wheel Chart -->
-    <div class="life-balance-section">
-        <h3>How I Spend My Time</h3>
-        <div class="balance-container">
-            <div class="balance-wheel-container">
-                <div class="balance-wheel">
-                    <div class="wheel-segment" style="--rotation: 0deg; --percentage: 35; --color: var(--primary);" data-category="Coding">
-                        <div class="segment-label">Coding</div>
-                        <div class="segment-value">35%</div>
-                    </div>
-                    <div class="wheel-segment" style="--rotation: 126deg; --percentage: 20; --color: var(--accent);" data-category="Adventures">
-                        <div class="segment-label">Adventures</div>
-                        <div class="segment-value">20%</div>
-                    </div>
-                    <div class="wheel-segment" style="--rotation: 198deg; --percentage: 15; --color: #FFD700;" data-category="Cooking">
-                        <div class="segment-label">Cooking</div>
-                        <div class="segment-value">15%</div>
-                    </div>
-                    <div class="wheel-segment" style="--rotation: 252deg; --percentage: 15; --color: #4CAF50;" data-category="Learning">
-                        <div class="segment-label">Learning</div>
-                        <div class="segment-value">15%</div>
-                    </div>
-                    <div class="wheel-segment" style="--rotation: 306deg; --percentage: 15; --color: #9C27B0;" data-category="Creating">
-                        <div class="segment-label">Creating</div>
-                        <div class="segment-value">15%</div>
-                    </div>
-                    <div class="wheel-center">
-                        <span>Balance</span>
-                    </div>
-                </div>
-            </div>
-            <div class="balance-info">
-                <div class="balance-tagline">Work, play, create, repeat.</div>
-                <p class="balance-description">
-                    I believe in the power of a balanced life. While I'm passionate about healthcare technology and AI, 
-                    I make sure to nurture my creativity and wellbeing through diverse activities. 
-                    This balance is what keeps me innovative and energized!
-                </p>
-                <div class="balance-legend">
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: var(--primary);"></div>
-                        <div class="legend-text">Coding & Healthcare Innovation</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: var(--accent);"></div>
-                        <div class="legend-text">Outdoor Adventures</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #FFD700;"></div>
-                        <div class="legend-text">Culinary Experiments</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #4CAF50;"></div>
-                        <div class="legend-text">Learning New Skills</div>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #9C27B0;"></div>
-                        <div class="legend-text">Creative Projects</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Inspiring Quote Section -->
     <div class="inspiring-quote-section">
         <div class="quote-container">
             <div class="quote-decoration left"></div>
@@ -5461,7 +5335,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </div>
     
-    <!-- "I Also Love" Wall -->
+    <!-- "I Also Love" Wall
     <div class="love-wall">
         <h3>I Also Love...</h3>
         <div class="love-wall-grid">
@@ -5506,7 +5380,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="love-text">Sunrises</div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 </section>
