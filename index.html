@@ -1694,9 +1694,20 @@ Last edited just now
         }
         
         .status-exit {
-            background: rgba(82, 113, 255, 0.15);
-            color: var(--primary);
+            background: rgba(255, 82, 88, 0.15);
+            color:  #e65353d8;
         }
+        .startup-note {
+            flex: 1;
+            margin: 0 0.75rem;
+            padding: 0.4rem 0.8rem;
+            background: #f0f4ff;
+            color: #4051b5;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 6px;
+            line-height: 1.4;
+          }
         
         .startup-link {
             color: var(--primary);
@@ -4420,6 +4431,7 @@ blockquote {
         width: 100%;
         font-size: 1.1rem;
     }
+  
     
     .mobile-only {
         display: block;
@@ -5297,8 +5309,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
         <div class="startup-footer">
-            <span class="startup-status status-active">Active</span>
-            <span class="startup-note">I have exited the company, but the founder is still taking it forward—go support her!</span>
+            <span class="startup-status status-exit">Exited</span>
+            <span class="startup-note">Exited, founder’s still leading — go support her!</span>
             <a href="https://juggl.ai/" class="startup-link">Learn More <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
